@@ -16,14 +16,24 @@ module Heroku
       check_options!
     end
 
+    # def call(env)
+    #   if options[:defer]
+    #     EventMachine.defer { autoscale(env) }
+    #   else
+    #     autoscale(env)
+    #   end
+    # 
+    #   app.call(env)
+    # end
+    
+    # from http://natekontny.com/post/11575735846/how-to-autoscale-heroku
     def call(env)
-      if options[:defer]
-        EventMachine.defer { autoscale(env) }
+      if env["PATH_INFO"] == "/autoscale/#{options[:autoscale_key]}"
+        autoscale env
+        [200, {'Content-Type' => 'text/plain'}, ["Current wait time: #{env["HTTP_X_HEROKU_QUEUE_WAIT_TIME"]}"]]
       else
-        autoscale(env)
+        app.call(env)
       end
-
-      app.call(env)
     end
 
 private ######################################################################
