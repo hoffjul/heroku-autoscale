@@ -4,8 +4,8 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{heroku-autoscale}
-  s.version = "0.2.2"
+  s.name = %q{hoffjul-heroku-autoscale}
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Dollar"]
