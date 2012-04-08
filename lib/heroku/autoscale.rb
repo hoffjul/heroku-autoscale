@@ -72,6 +72,7 @@ private ######################################################################
         :defer           => true,
         :min_dynos       => 1,
         :max_dynos       => 1,
+        :autoscale_key   => '',
         :queue_wait_high => 5000, # milliseconds
         :queue_wait_low  => 0,    # milliseconds
         :min_frequency   => 10    # seconds
